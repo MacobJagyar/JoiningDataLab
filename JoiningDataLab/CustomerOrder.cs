@@ -8,9 +8,9 @@ namespace JoiningDataLab
 {
 
 
-    public class Customer
+    public class CustomerOrder
     {
-        public Customer(string aCustomerName, string aItem, decimal aPrice, int aQuantity, decimal aTotal)
+        public CustomerOrder(string aCustomerName, string aItem, decimal aPrice, int aQuantity, decimal aTotal)
         {
             CustomerName = aCustomerName;
             Item = aItem;
@@ -20,44 +20,44 @@ namespace JoiningDataLab
 
         }
 
-        public Customer() { }
+        public CustomerOrder() { }
 
         public string CustomerName { get; set; }
         public string Item { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public decimal Total { get; set; }
-        public static List<Customer> CustomerDb { get; set; } = new List<Customer>()
+        public static List<CustomerOrder> CustomerDb { get; set; } = new List<CustomerOrder>()
         {
-            new Customer(
+            new CustomerOrder(
                "Acme Hardware",
                "Mouse",
                25,
                3 ,
                75) ,
 
-            new Customer(
+            new CustomerOrder(
                 "Acme Hardware",
                 "Keyboard",
                 45,
                 2,
                 90),
 
-            new Customer(
+            new CustomerOrder(
                 "Falls Realty",
                 "Macbook",
                 800,
                 2,
                 1600),
 
-            new Customer(
+            new CustomerOrder(
                 "Julie's Morning Diner",
                 "iPad",
                 525,
                 1,
                 525),
 
-            new Customer(
+            new CustomerOrder(
                 "Julie's Morning Diner",
                 "Credit Card Reader",
                 45,
@@ -127,7 +127,7 @@ namespace JoiningDataLab
                 }
             }
 
-            foreach (Customer c in CustomerDb.FindAll(x => x.CustomerName == "Acme Hardware"))
+            foreach (CustomerOrder c in CustomerDb.FindAll(x => x.CustomerName == "Acme Hardware"))
             {
                 acmeGrand += c.Total;
             }
@@ -150,7 +150,7 @@ namespace JoiningDataLab
                 }
             }
 
-            foreach (Customer c in CustomerDb.FindAll(x => x.CustomerName == "Falls Realty"))
+            foreach (CustomerOrder c in CustomerDb.FindAll(x => x.CustomerName == "Falls Realty"))
             {
                 fallsGrand += c.Total;
             }
@@ -172,7 +172,7 @@ namespace JoiningDataLab
                 }
             }
 
-            foreach (Customer c in CustomerDb.FindAll(x => x.CustomerName == "Julie's Morning Diner"))
+            foreach (CustomerOrder c in CustomerDb.FindAll(x => x.CustomerName == "Julie's Morning Diner"))
             {
                 juliesGrand += c.Total;
             }
@@ -183,37 +183,38 @@ namespace JoiningDataLab
             Console.WriteLine();
 
             Console.WriteLine("EXERCISE 3");
-            Console.WriteLine(String.Format("{0, -25} {1, -25} {2, -15} {3, -15} {4, -15}", "Customer", "Item", "Price", "Quantity", "Total"));
-            Console.WriteLine(String.Format("{0, -25}", "Acme Hardware"));
-            foreach (Customer c in CustomerDb)
+            Console.WriteLine(String.Format("{0, -15} {1, -15} {2, -15} {3, -15} {4, -15}", "Customer", "Item", "Price", "Quantity", "Total"));
+
+            for (int count = 0; count < CustomerDb.Count; count++)
             {
-                if (c.CustomerName == "Acme Hardware")
+                if (CustomerDb[count].CustomerName == "Acme Hardware")
                 {
-                    Console.WriteLine(String.Format("{0, -25} {1, -25} {2, -15} {3, -15}", " ", c.Item, c.Price, c.Quantity, c.Total));
+                    Console.WriteLine(String.Format("{0, -15} {1, -15} {2, -15} {3, -15} {4, -15}",
+                        CustomerDb[count].CustomerName, CustomerDb[count].Item, CustomerDb[count].Price, CustomerDb[count].Quantity, CustomerDb[count].Total));
                 }
             }
 
-            //for (int count = 0; count < CustomerDb.Count; count++)
-            //{
-            //    if (CustomerDb[count].CustomerName == "Acme Hardware")
-            //    {
-            //        Console.WriteLine(String.Format("{0, -25} {1, -25} {2, -15} {3, -15}, {4, -15}", "Acme Hardware", CustomerDb[count].Item, CustomerDb[count].Price, CustomerDb[count].Quantity, CustomerDb[count].Total));
-            //    }
-            //}
+            //Console.WriteLine("\nFalls Realty");
+
+            //Console.WriteLine(String.Format("{0, -15} {1, -15} {2, -15} {3, -15}", "Item", "Price", "Quantity", "Total"));
 
             //for (int count = 0; count < CustomerDb.Count; count++)
             //{
             //    if (CustomerDb[count].CustomerName == "Falls Realty")
             //    {
-            //        Console.WriteLine(String.Format("{0, -25} {1, -25} {2, -15} {3, -15}" , CustomerDb[count].Item, CustomerDb[count].Price, CustomerDb[count].Quantity, CustomerDb[count].Total));
+            //        Console.WriteLine(String.Format("{0, -15} {1, -15} {2, -15} {3, -15}", CustomerDb[count].Item, CustomerDb[count].Price, CustomerDb[count].Quantity, CustomerDb[count].Total));
             //    }
             //}
+
+            //Console.WriteLine("\nJulie's Morning Diner");
+
+            //Console.WriteLine(String.Format("{0, 20} {1, 20} {2, 20} {3, 20}", "Item", "Price", "Quantity", "Total"));
 
             //for (int count = 0; count < CustomerDb.Count; count++)
             //{
             //    if (CustomerDb[count].CustomerName == "Julie's Morning Diner")
             //    {
-            //        Console.WriteLine(String.Format("{0, -25} {1, -25} {2, -15} {3, -15}", CustomerDb[count].Item, CustomerDb[count].Price, CustomerDb[count].Quantity, CustomerDb[count].Total));
+            //        Console.WriteLine(String.Format("{0, 20} {1, 20} {2, 20} {3, 20}", CustomerDb[count].Item, CustomerDb[count].Price, CustomerDb[count].Quantity, CustomerDb[count].Total));
             //    }
             //}
         }

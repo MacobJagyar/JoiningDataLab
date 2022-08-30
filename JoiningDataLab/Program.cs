@@ -1,9 +1,9 @@
 ﻿using JoiningDataLab;
 
-Customer customer1= new Customer();
+CustomerOrder customer1= new CustomerOrder();
 
 //Customer.ForExercise1();
 
 //Customer.ForExercise2();
 
-Customer.ForExercise3();
+CustomerOrder.ForExercise3();
